@@ -57,7 +57,7 @@ function openPaintWindow() {
     const centerX = Math.floor(canvas.width / 2);
     const centerY = Math.floor(canvas.height / 2);
     simulatePointerEvents(canvas, centerX, centerY, centerX, centerY);
-    console.log('Попытка открыть окно рисования');
+    console.log('تلاش برای بازکردن صفحه');
   });
 }
 
@@ -100,7 +100,7 @@ function randomClick() {
     } else if (buttonText === 'No energy') {
       if (noEnergyTimeout === null) {
         const randomPause = getRandomDelay(GAME_SETTINGS.minPauseDuration, GAME_SETTINGS.maxPauseDuration);
-        console.log(`Нет энергии. Рандомная пауза: ${randomPause} мс.`);
+        console.log(`توقف ناگهانی: ${randomPause}`);
         noEnergyTimeout = setTimeout(() => {
           noEnergyTimeout = null;
           isClickInProgress = false;
@@ -116,7 +116,7 @@ function randomClick() {
       setTimeout(randomClick, nextClickDelay);
     }
   } else {
-    console.log('Окно рисования не найдено. Попытка открыть окно рисования.');
+    console.log('...پنجره یافت نشد! درحال تلاش مجدد');
     openPaintWindow();
     isClickInProgress = false;
     setTimeout(randomClick, 2000);
@@ -152,7 +152,7 @@ function clickOkayPromiseButton() {
 function checkGameCrash() {
   const crashElement = document.querySelector('div._container_ieygs_8');
   if (crashElement) {
-    console.log('Игра вылетела. Обновление страницы.');
+    console.log('...بازی خراب شد!بروزرسانی');
     location.reload();
   } else {
     setTimeout(checkGameCrash, 2000);
@@ -189,7 +189,7 @@ function initialRandomMoves() {
 function startScript() {
   openPaintWindow();
   initialRandomMoves().then(() => {
-    console.log('Начальные случайные движения выполнены. Начинаем нормальную работу.');
+    console.log('...درحال شروع عمل عادی');
     setTimeout(randomClick, 2000);
   });
 }
